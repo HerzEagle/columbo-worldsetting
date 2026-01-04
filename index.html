@@ -3,197 +3,328 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[你的世界名称] - 官方设定集</title>
+    <title>「科洛姆波」档案馆</title>
     <style>
-        /* --- 基础样式 --- */
+        /* 全局风格：19世纪复古风 */
         :root {
-            --primary-color: #d4af37; /* 金色点缀 */
-            --bg-color: #121212;      /* 深色背景 */
-            --text-color: #e0e0e0;    /* 浅灰文字 */
-            --card-bg: #1e1e1e;       /* 卡片背景 */
+            --bg-color: #f4e4bc; /* 羊皮纸黄 */
+            --text-color: #2b2b2b; /* 墨黑 */
+            --accent-color: #8b0000; /* 深红（封蜡色） */
+            --link-color: #003366; /* 海军蓝 */
+            --border-style: 3px double #5c4033;
         }
 
         body {
-            margin: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: "Georgia", "Times New Roman", "Songti SC", serif; /* 衬线字体增加严肃感 */
             background-color: var(--bg-color);
+            background-image: url('[背景纹理：老旧纸张或淡淡的齿轮水印]'); 
             color: var(--text-color);
+            margin: 0;
+            padding: 0;
             line-height: 1.6;
         }
 
-        a { text-decoration: none; color: var(--primary-color); transition: 0.3s; }
-        a:hover { color: #fff; }
-
-        /* --- 导航栏 --- */
+        /* 顶部导航与标题 */
         header {
-            background: rgba(0, 0, 0, 0.9);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #333;
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: var(--border-style);
+            background: rgba(255, 255, 255, 0.4);
         }
-        
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #1a1a1a;
+            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
+        }
+
+        .subtitle {
+            font-style: italic;
+            font-size: 1.2em;
+            color: var(--accent-color);
+        }
+
+        /* 导航栏 */
         nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
+            margin-top: 20px;
+            background: #2b2b2b;
+            padding: 10px;
         }
 
-        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
-        .nav-links a { margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; }
-
-        /* --- 占位符样式 (提示你替换内容) --- */
-        .placeholder-img {
-            background-color: #333;
-            border: 2px dashed #555;
-            color: #888;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 20px;
-            margin-bottom: 15px;
+        nav a {
+            color: #f4e4bc;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-size: 1.1em;
+            transition: color 0.3s;
         }
 
-        /* --- 英雄区 (Hero Section) --- */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #222; /* 这里未来可以换成你的背景图 */
-            background-size: cover;
-            background-position: center;
-            padding: 0 20px;
+        nav a:hover {
+            color: #daa520; /* 金色 */
+            text-decoration: underline;
         }
 
-        .hero h1 { font-size: 4rem; margin-bottom: 1rem; color: var(--primary-color); }
-        .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto; }
-
-        /* --- 通用容器 --- */
+        /* 主体容器 */
         .container {
-            max-width: 1100px;
-            margin: 80px auto;
-            padding: 0 20px;
-        }
-
-        section { margin-bottom: 100px; }
-        h2 { font-size: 2.5rem; border-left: 5px solid var(--primary-color); padding-left: 15px; margin-bottom: 30px; }
-
-        /* --- 网格布局 --- */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .card {
-            background: var(--card-bg);
+            max-width: 1000px;
+            margin: 40px auto;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-            transition: transform 0.3s;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border: 1px solid #d3c19a;
         }
-        .card:hover { transform: translateY(-5px); }
 
-        /* --- 页脚 --- */
-        footer {
-            background: #000;
-            text-align: center;
-            padding: 40px 0;
-            color: #666;
-            border-top: 1px solid #333;
+        /* BGM 控制器 */
+        .bgm-player {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--text-color);
+            padding: 10px;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 0.8em;
+            z-index: 100;
+            opacity: 0.8;
         }
+
+        /* 各个板块设计 */
+        section {
+            margin-bottom: 60px;
+            border-bottom: 1px solid #aaa;
+            padding-bottom: 40px;
+        }
+
+        h2 {
+            border-left: 5px solid var(--accent-color);
+            padding-left: 15px;
+            color: #333;
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .content-wrapper {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .text-col {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .img-col {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+        }
+
+        .placeholder-img {
+            width: 100%;
+            height: 200px;
+            background-color: #dcdcdc;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #555;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 8px 15px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .read-more:hover {
+            background-color: var(--accent-color);
+            color: #fff;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9em;
+            color: #666;
+            border-top: var(--border-style);
+            margin-top: 50px;
+        }
+
+        /* 引用块样式 */
+        blockquote {
+            font-family: "Georgia", serif;
+            font-style: italic;
+            border-left: 3px solid #daa520;
+            margin: 20px 0;
+            padding-left: 20px;
+            color: #555;
+            background: rgba(0,0,0,0.02);
+        }
+
     </style>
 </head>
 <body>
 
+    <div class="bgm-player">
+        🎵 正在播放: [BGM名称 - 例如：蒸汽与齿轮的华尔兹] <br>
+        <audio controls loop>
+            <source src="[你的BGM文件链接.mp3]" type="audio/mpeg">
+            您的浏览器不支持音频元素。
+        </audio>
+    </div>
+
     <header>
+        <h1>[世界名称]</h1>
+        <div class="subtitle">—— 钢铁、迷雾与未竟的魔法史诗 ——</div>
+        
         <nav>
-            <div class="logo">[你的世界名称]</div>
-            <div class="nav-links">
-                <a href="#intro">世界观</a>
-                <a href="#map">地理志</a>
-                <a href="#races">种族与势力</a>
-                <a href="#history">编年史</a>
-            </div>
+            <a href="#intro">起始页</a>
+            <a href="#history">断代史</a>
+            <a href="#geography">地理志</a>
+            <a href="#factions">势力与纹章</a>
+            <a href="#races">智慧种族</a>
+            <a href="#magic">魔导工业</a>
+            <a href="#culture">社会与风俗</a>
         </nav>
     </header>
-
-    <section class="hero">
-        <div>
-            <h1>[世界的主标题]</h1>
-            <p>[一句话Slogan：例如“在余烬中重铸荣光”]</p>
-            <br>
-            <a href="#intro" style="border: 1px solid var(--primary-color); padding: 10px 20px;">探索世界</a>
-        </div>
-    </section>
 
     <div class="container">
 
         <section id="intro">
-            <h2>世界起源</h2>
-            <div class="grid">
-                <div>
-                    <p>[这里填写关于创世神话的介绍...]</p>
-                    <p>[这里填写关于魔法/科技体系的核心设定...]</p>
+            <h2>欢迎来到 [世界名称]</h2>
+            <div class="content-wrapper">
+                <div class="text-col">
+                    <p>
+                        [这里是一段引人入胜的开场白。例如：当第三次工业革命的汽笛唤醒了沉睡的巨龙，世界便在煤灰与星尘中被重新锻造。]
+                    </p>
+                    <p>
+                        本档案馆致力于记录自“大撕裂”以来的所有文明遗迹。无论您是来自帝国的学者，还是荒原的探险家，这里都记载着您所寻求的真理——亦或是禁忌。
+                    </p>
+                    <blockquote>
+                        “我们试图用齿轮模拟神迹，最后却发现神本身就是一台生锈的机器。” —— [著名NPC的名字]
+                    </blockquote>
                 </div>
-                <div class="placeholder-img" style="height: 300px;">
-                    [图片地址：创世神话插图 或 核心概念图]
-                </div>
-            </div>
-        </section>
-
-        <section id="map">
-            <h2>地理志</h2>
-            <div class="placeholder-img" style="height: 500px;">
-                [图片地址：世界地图全览]
-            </div>
-            <p style="text-align: center; font-style: italic; color: #888;">[关于地图的简短描述：例如“大陆被无尽之海包围，分为三大板块...”]</p>
-        </section>
-
-        <section id="races">
-            <h2>主要势力</h2>
-            <div class="grid">
-                <div class="card">
-                    <div class="placeholder-img" style="height: 150px;">[图片地址：势力1徽章]</div>
-                    <h3>[势力名称 A]</h3>
-                    <p>[关于势力A的简短介绍：他们的信仰、领地和特征...]</p>
-                </div>
-                <div class="card">
-                    <div class="placeholder-img" style="height: 150px;">[图片地址：势力2徽章]</div>
-                    <h3>[势力名称 B]</h3>
-                    <p>[关于势力B的简短介绍...]</p>
-                </div>
-                <div class="card">
-                    <div class="placeholder-img" style="height: 150px;">[图片地址：势力3徽章]</div>
-                    <h3>[势力名称 C]</h3>
-                    <p>[关于势力C的简短介绍...]</p>
+                <div class="img-col">
+                    <div class="placeholder-img">
+                        [图片地址：世界概念图/标志性蒸汽朋克城市全景]
+                    </div>
+                    <small>图：[世界名称] 的心脏地带</small>
                 </div>
             </div>
         </section>
 
         <section id="history">
-            <h2>历史长河</h2>
+            <h2>历史：灰烬与荣光</h2>
+            <div class="content-wrapper">
+                <div class="img-col">
+                    <div class="placeholder-img">
+                        [图片地址：描绘古代战争或历史性条约签订的油画风格图]
+                    </div>
+                </div>
+                <div class="text-col">
+                    <p>
+                        从[远古神话时代]的陨落，到[近代关键历史事件]的爆发，时间的长河在此分流。
+                    </p>
+                    <ul>
+                        <li><strong>黄金纪元：</strong> [关于魔法原本繁荣的简单介绍]</li>
+                        <li><strong>黑铁时代：</strong> [关于工业革命如何取代或融合魔法的介绍]</li>
+                        <li><strong>现代冲突：</strong> [当前世界面临的主要危机简述]</li>
+                    </ul>
+                    <a href="history.html" class="read-more">查阅完整编年史 &raquo;</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="geography">
+            <h2>地理：迷雾地图</h2>
+            <p>
+                [关于世界版图的宏观描述，例如：世界被划分为东西两块大陆，中间隔着风暴肆虐的无尽之海。]
+            </p>
+            <div class="placeholder-img" style="height: 300px;">
+                [图片地址：复古手绘风格的世界地图，标有海怪和航线]
+            </div>
+            <p style="text-align: center; margin-top: 10px;">
+                <a href="geography.html" class="read-more">展开地图集 &raquo;</a>
+            </p>
+        </section>
+
+        <section id="factions">
+            <h2>主要势力</h2>
+            <div class="content-wrapper">
+                <div class="text-col">
+                    <h3>[帝国/王国名称]</h3>
+                    <p>[介绍：拥有最强大的蒸汽舰队，信奉秩序与钢铁。]</p>
+                    
+                    <h3>[法师议会/教廷名称]</h3>
+                    <p>[介绍：旧时代的守护者，掌握着最后的高塔魔法。]</p>
+
+                    <h3>[革命军/地下组织]</h3>
+                    <p>[介绍：潜伏在贫民窟与下水道中的反抗力量。]</p>
+                    
+                    <a href="factions.html" class="read-more">查看势力关系图 &raquo;</a>
+                </div>
+                <div class="img-col">
+                    <div class="placeholder-img">
+                        [图片地址：各势力的徽章/旗帜集合]
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="races">
+            <h2>种族生态</h2>
+            <p>在这个世界，并非只有人类在仰望满是煤烟的天空。</p>
             <ul>
-                <li><strong>[纪元名称1]：</strong> [关于该时代发生的重大事件介绍...]</li>
-                <li><strong>[纪元名称2]：</strong> [关于灾变或战争的介绍...]</li>
-                <li><strong>[当前纪元]：</strong> [现在的世界状态...]</li>
+                <li><strong>人类：</strong> [介绍：最具适应力的种族，统治着大部分工业城市]</li>
+                <li><strong>[异族A，如：发条精灵]：</strong> [介绍：为了适应工业化而改造自己身体的古老种族]</li>
+                <li><strong>[异族B，如：深渊混血]：</strong> [介绍：被视为不洁的底层劳工]</li>
             </ul>
+            <a href="races.html" class="read-more">深入了解种族图鉴 &raquo;</a>
+        </section>
+
+        <section id="magic">
+            <h2>文化、魔法与科技</h2>
+            <div class="content-wrapper">
+                <div class="text-col">
+                    <p>
+                        这里的魔法不再是吟唱咒语，而是精确计算的方程式；这里的文化充满了维多利亚式的繁文缛节与探险家的狂野。
+                    </p>
+                    <p>
+                        <strong>核心体系：</strong> [例如：以太动力学 / 炼金术 / 蒸汽核心技术]
+                    </p>
+                    <a href="magic_culture.html" class="read-more">阅读《魔导工业导论》 &raquo;</a>
+                </div>
+                <div class="img-col">
+                    <div class="placeholder-img">
+                        [图片地址：复杂的魔法阵图纸或机械解剖图]
+                    </div>
+                </div>
+            </div>
         </section>
 
     </div>
 
     <footer>
-        <p>&copy; 2023 [你的名字/笔名]. All Rights Reserved.</p>
-        <p>Created for [你的世界名称]</p>
+        <p>&copy; 2026 天之苍苍，其正色邪. All Rights Reserved.</p>
+        <p>新历一六一五年 雾月十八日</p>
     </footer>
 
 </body>
 </html>
+
+
+</body>
+</html>
+
