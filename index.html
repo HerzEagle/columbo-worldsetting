@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[你的世界名称] - 官方设定集</title>
+    <style>
+        /* --- 基础样式 --- */
+        :root {
+            --primary-color: #d4af37; /* 金色点缀 */
+            --bg-color: #121212;      /* 深色背景 */
+            --text-color: #e0e0e0;    /* 浅灰文字 */
+            --card-bg: #1e1e1e;       /* 卡片背景 */
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        a { text-decoration: none; color: var(--primary-color); transition: 0.3s; }
+        a:hover { color: #fff; }
+
+        /* --- 导航栏 --- */
+        header {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #333;
+        }
+        
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo { font-size: 1.5rem; font-weight: bold; letter-spacing: 2px; }
+        .nav-links a { margin-left: 20px; font-size: 0.9rem; text-transform: uppercase; }
+
+        /* --- 占位符样式 (提示你替换内容) --- */
+        .placeholder-img {
+            background-color: #333;
+            border: 2px dashed #555;
+            color: #888;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            margin-bottom: 15px;
+        }
+
+        /* --- 英雄区 (Hero Section) --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), #222; /* 这里未来可以换成你的背景图 */
+            background-size: cover;
+            background-position: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 { font-size: 4rem; margin-bottom: 1rem; color: var(--primary-color); }
+        .hero p { font-size: 1.5rem; max-width: 800px; margin: 0 auto; }
+
+        /* --- 通用容器 --- */
+        .container {
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+
+        section { margin-bottom: 100px; }
+        h2 { font-size: 2.5rem; border-left: 5px solid var(--primary-color); padding-left: 15px; margin-bottom: 30px; }
+
+        /* --- 网格布局 --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            transition: transform 0.3s;
+        }
+        .card:hover { transform: translateY(-5px); }
+
+        /* --- 页脚 --- */
+        footer {
+            background: #000;
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">[你的世界名称]</div>
+            <div class="nav-links">
+                <a href="#intro">世界观</a>
+                <a href="#map">地理志</a>
+                <a href="#races">种族与势力</a>
+                <a href="#history">编年史</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>[世界的主标题]</h1>
+            <p>[一句话Slogan：例如“在余烬中重铸荣光”]</p>
+            <br>
+            <a href="#intro" style="border: 1px solid var(--primary-color); padding: 10px 20px;">探索世界</a>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section id="intro">
+            <h2>世界起源</h2>
+            <div class="grid">
+                <div>
+                    <p>[这里填写关于创世神话的介绍...]</p>
+                    <p>[这里填写关于魔法/科技体系的核心设定...]</p>
+                </div>
+                <div class="placeholder-img" style="height: 300px;">
+                    [图片地址：创世神话插图 或 核心概念图]
+                </div>
+            </div>
+        </section>
+
+        <section id="map">
+            <h2>地理志</h2>
+            <div class="placeholder-img" style="height: 500px;">
+                [图片地址：世界地图全览]
+            </div>
+            <p style="text-align: center; font-style: italic; color: #888;">[关于地图的简短描述：例如“大陆被无尽之海包围，分为三大板块...”]</p>
+        </section>
+
+        <section id="races">
+            <h2>主要势力</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="placeholder-img" style="height: 150px;">[图片地址：势力1徽章]</div>
+                    <h3>[势力名称 A]</h3>
+                    <p>[关于势力A的简短介绍：他们的信仰、领地和特征...]</p>
+                </div>
+                <div class="card">
+                    <div class="placeholder-img" style="height: 150px;">[图片地址：势力2徽章]</div>
+                    <h3>[势力名称 B]</h3>
+                    <p>[关于势力B的简短介绍...]</p>
+                </div>
+                <div class="card">
+                    <div class="placeholder-img" style="height: 150px;">[图片地址：势力3徽章]</div>
+                    <h3>[势力名称 C]</h3>
+                    <p>[关于势力C的简短介绍...]</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="history">
+            <h2>历史长河</h2>
+            <ul>
+                <li><strong>[纪元名称1]：</strong> [关于该时代发生的重大事件介绍...]</li>
+                <li><strong>[纪元名称2]：</strong> [关于灾变或战争的介绍...]</li>
+                <li><strong>[当前纪元]：</strong> [现在的世界状态...]</li>
+            </ul>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2023 [你的名字/笔名]. All Rights Reserved.</p>
+        <p>Created for [你的世界名称]</p>
+    </footer>
+
+</body>
+</html>
