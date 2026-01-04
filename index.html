@@ -321,10 +321,25 @@
         <p>新历一六一五年 雾月十八日</p>
     </footer>
 
+    <audio id="world-bgm" loop>
+    <source src="music/theme_Vltava.aac" type="audio/aac"> 
+</audio>
+
+    <script>
+        document.body.addEventListener('click', function() {
+            var audio = document.getElementById('world-bgm');
+            if (audio.paused) {
+                audio.play();
+                audio.volume = 0.5; 
+            }
+        }, { once: true });
+    </script>
+
 </body>
 </html>
 
 
 </body>
 </html>
+
 
