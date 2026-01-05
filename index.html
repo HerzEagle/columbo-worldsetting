@@ -159,22 +159,133 @@
             background: rgba(0,0,0,0.02);
         }
 
+        /* 地理板块交互样式 */
+        .geo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3列布局 */
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .geo-btn {
+            position: relative;
+            height: 100px;
+            background-color: #e8d8b0; /* 淡雅浅黄棕 */
+            border: 1px solid #c0a080;
+            text-decoration: none;
+            color: #2b2b2b;
+            overflow: hidden;
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            transition: transform 0.2s;
+            display: block;
+        }
+
+        .geo-btn:active {
+            transform: scale(0.98);
+        }
+
+        .geo-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        /* 默认层：半透明背景图+标题 */
+        .layer-default {
+            opacity: 1;
+            z-index: 2;
+        }
+        
+        .layer-default img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            opacity: 0.25; /* 半透明背景 */
+            z-index: -1;
+            filter: sepia(0.5);
+        }
+
+        .layer-default span {
+            font-size: 1.1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid var(--accent-color);
+            background: rgba(255,255,255,0.6);
+            padding: 2px 8px;
+        }
+
+        /* 悬停层：说明文字 */
+        .layer-hover {
+            opacity: 0;
+            z-index: 1;
+            background-color: #f4e4bc; /* 纯色背景遮挡 */
+            text-align: center;
+            font-size: 0.85em;
+            line-height: 1.3;
+            color: var(--accent-color);
+        }
+
+        .geo-btn:hover .layer-default {
+            opacity: 0;
+        }
+
+        .geo-btn:hover .layer-hover {
+            opacity: 1;
+            z-index: 3;
+        }
+
+        /* 轮播图样式 */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            background-color: #dcdcdc;
+            overflow: hidden;
+            border: 1px solid #555;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.2);
+        }
+
+        .carousel-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+
+        .carousel-img.active {
+            opacity: 1;
+        }
+        /* --------------------------- */
+
     </style>
 </head>
 <body>
 
     <header>
         <h1>「科洛姆波」Columbo</h1>
-        <div class="subtitle">—— 凡人的时代   An Epoch of the Common Mortals ——</div>
+        <div class="subtitle">—— 凡人的时代 - An Epoch of the Common Mortals ——</div>
         
         <nav>
-            <a href="#intro">起始页</a>
-            <a href="#history">断代史</a>
-            <a href="#geography">地理志</a>
+            <a href="#intro">起始页面</a>
+            <a href="#history">历史概览</a>
+            <a href="#geography">世界大观</a>
             <a href="#factions">主要势力</a>
-            <a href="#races">智慧种族</a>
-            <a href="#magic">秘法原理</a>
-            <a href="#culture">社会与风俗</a>
+            <a href="#races">种族格差</a>
+            <a href="#magic">魔法概论</a>
         </nav>
     </header>
 
@@ -224,15 +335,75 @@
 
         <section id="geography">
             <h2>世界大观</h2>
-            <p>
-                [关于世界版图的宏观描述]
-            </p>
-            <div class="placeholder-img" style="height: 300px;">
-                [图片地址]
+            
+            <blockquote>
+                同样，大地的一切出产也都受人类支配。我们利用平原，我们利用山区，河流是我们的，湖泊是我们的，我们播种五谷，我们栽植树木，我们通过引水灌溉让土地肥沃，我们拦截、疏导、改变河流。简言之，凭借我们的双手，我们试图在自然之中创造出另一个自然。
+            </blockquote>
+
+            <!-- 6个功能按钮 -->
+            <div class="geo-grid">
+                <a href="geography.html#general" class="geo-btn">
+                    <div class="geo-layer layer-default">
+                        <img src="image/main/geography_icon_bg_1.jpg" alt="bg"> 
+                        <span>总体情况</span>
+                    </div>
+                    <div class="geo-layer layer-hover">
+                        一个与地球有诸多相似之处，却也独具特色的奇幻世界。
+                    </div>
+                </a>
+                <a href="geography.html#astronomy" class="geo-btn">
+                    <div class="geo-layer layer-default">
+                        <img src="image/main/geography_icon_bg_2.jpg" alt="bg">
+                        <span>星系天文</span>
+                    </div>
+                    <div class="geo-layer layer-hover">
+                        科洛姆波是苍茫银河中阿塔玛纳星系的第四颗行星。
+                    </div>
+                </a>
+                <a href="geography.html#history" class="geo-btn">
+                    <div class="geo-layer layer-default">
+                        <img src="image/main/geography_icon_bg_3.jpg" alt="bg">
+                        <span>演进历史</span>
+                    </div>
+                    <div class="geo-layer layer-hover">
+                        科洛姆波在银河边缘享受了数十亿年的宁静，直至地球殖民者于八万年前到来。
+                    </div>
+                </a>
+                <a href="geography.html#physics" class="geo-btn">
+                    <div class="geo-layer layer-default">
+                        <img src="image/main/geography_icon_bg_4.jpg" alt="bg">
+                        <span>物理属性</span>
+                    </div>
+                    <div class="geo-layer layer-hover">
+                        科洛姆波的各项参数与地球出乎意料地相似——这既是演化的鬼斧神工，也是有意改造的结果。
+                    </div>
+                </a>
+                <a href="geography.html#environment" class="geo-btn">
+                    <div class="geo-layer layer-default">
+                        <img src="image/main/geography_icon_bg_5.jpg" alt="bg">
+                        <span>自然环境</span>
+                    </div>
+                    <div class="geo-layer layer-hover">
+                        科洛姆波总体而言适于智慧生物生存发展，但其间危机险恶亦不可胜数。
+                    </div>
+                </a>
+                <a href="geography.html#regions" class="geo-btn">
+                    <div class="geo-layer layer-default">
+                        <img src="image/main/geography_icon_bg_6.jpg" alt="bg">
+                        <span>分区地理</span>
+                    </div>
+                    <div class="geo-layer layer-hover">
+                        七片大陆和海洋的简介。目前已知的多数故事主要发生在布里安洲。
+                    </div>
+                </a>
             </div>
-            <p style="text-align: center; margin-top: 10px;">
-                <a href="geography.html" class="read-more">查阅世界地理志 &raquo;</a>
-            </p>
+
+            <!-- 图片轮播 -->
+            <!-- 建议图片尺寸：宽800px以上，高300px，保持统一比例 -->
+            <div class="carousel-container" id="geo-carousel">
+                <img src="image/main/geo_slide_1.jpg" class="carousel-img active" alt="芬里西亚全图">
+                <img src="image/main/geo_slide_2.jpg" class="carousel-img" alt="马尔纳全图">
+            </div>
         </section>
 
         <section id="factions">
@@ -269,7 +440,7 @@
         </section>
 
         <section id="magic">
-            <h2>文化、魔法与科技</h2>
+            <h2>魔法概论</h2>
             <div class="content-wrapper">
                 <div class="text-col">
                     <p>
@@ -325,9 +496,20 @@
             document.addEventListener('click', tryPlayMusic);      
             window.addEventListener('scroll', tryPlayMusic);      
             window.addEventListener('touchstart', tryPlayMusic);   
+
+            // --- 新增：轮播图逻辑 ---
+            const slides = document.querySelectorAll('#geo-carousel .carousel-img');
+            let currentSlide = 0;
+            
+            if(slides.length > 0) {
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 8000); // 每8秒切换一次
+            }
         });
     </script>
 
 </body>
 </html>
-
