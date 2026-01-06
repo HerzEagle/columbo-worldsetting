@@ -78,11 +78,17 @@
             border: 1px solid #d3c19a;
         }
         
-        /* 各个板块设计 */
+        /* 各个板块设计：统一浅色背景和圆角阴影 */
         section {
             margin-bottom: 60px;
             border-bottom: 1px solid #aaa;
             padding-bottom: 40px;
+            background: rgba(255,255,255,0.7);
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         h2 {
@@ -351,7 +357,7 @@
 
         .faction-btn {
             position: relative;
-            aspect-ratio: 3 / 4; /* 高:宽 = 4:3 */
+            aspect-ratio: 4 / 3; /* 高:宽 = 3:4 */
             background-color: #e8d8b0;
             border: 2px solid #c0a080;
             text-decoration: none;
