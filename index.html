@@ -270,71 +270,269 @@
             opacity: 1;
         }
 
-        /* 时间线样式 */
+        /* 时间线样式 - 适配7个要素 */
         .timeline {
             position: relative;
-            padding-left: 20px;
-            margin: 30px 0;
+            padding-left: 15px;
+            margin: 35px 0;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 120px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--accent-color), #daa520);
+            left: 95px;
+            top: 15px;
+            bottom: 15px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent-color), #daa520, var(--accent-color));
         }
 
         .timeline-item {
             display: flex;
             align-items: flex-start;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             position: relative;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: 112px;
-            top: 12px;
-            width: 12px;
-            height: 12px;
-            background-color: var(--accent-color);
-            border: 2px solid #daa520;
+            left: 88px;
+            top: 10px;
+            width: 10px;
+            height: 10px;
+            background-color: #daa520;
+            border: 2px solid var(--accent-color);
             border-radius: 50%;
             z-index: 1;
         }
 
         .timeline-label {
-            width: 100px;
+            width: 80px;
             flex-shrink: 0;
-            padding: 8px 12px;
+            padding: 6px 8px;
             background-color: #e8d8b0;
             border: 1px solid #c0a080;
             text-align: center;
             font-weight: bold;
-            font-size: 0.9em;
+            font-size: 0.85em;
             color: var(--accent-color);
-            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
         }
 
         .timeline-content {
             flex: 1;
-            margin-left: 40px;
-            padding: 8px 15px;
+            margin-left: 35px;
+            padding: 6px 12px;
             background: rgba(255,255,255,0.4);
             border-left: 2px solid #daa520;
-            font-size: 0.95em;
+            font-size: 0.9em;
             line-height: 1.5;
         }
 
         .timeline-footer {
             text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
+            margin-top: 25px;
+            padding-top: 15px;
             border-top: 1px dashed #aaa;
+        }
+
+        /* 势力板块按钮样式 */
+        .faction-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .faction-btn {
+            position: relative;
+            aspect-ratio: 3 / 4; /* 高:宽 = 4:3 */
+            background-color: #e8d8b0;
+            border: 2px solid #c0a080;
+            text-decoration: none;
+            color: #2b2b2b;
+            overflow: hidden;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+
+        .faction-btn:hover {
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .faction-btn:active {
+            transform: scale(0.98);
+        }
+
+        .faction-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .faction-layer.layer-default {
+            opacity: 1;
+            z-index: 2;
+            background: linear-gradient(135deg, #f4e4bc 0%, #e8d8b0 50%, #d8c8a0 100%);
+        }
+
+        .faction-layer.layer-default span {
+            font-size: 1.3em;
+            font-weight: bold;
+            letter-spacing: 2px;
+            border-bottom: 3px solid var(--accent-color);
+            padding-bottom: 5px;
+            color: var(--accent-color);
+        }
+
+        .faction-layer.layer-hover {
+            opacity: 0;
+            z-index: 1;
+            background-color: #f4e4bc;
+            text-align: center;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            padding: 20px;
+        }
+
+        .faction-btn:hover .faction-layer.layer-default {
+            opacity: 0;
+        }
+
+        .faction-btn:hover .faction-layer.layer-hover {
+            opacity: 1;
+            z-index: 3;
+        }
+
+        /* 种族板块按钮样式 */
+        .race-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr); /* 2列布局 */
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .race-btn {
+            position: relative;
+            aspect-ratio: 4 / 3; /* 宽:高 = 4:3，即高:宽 = 3:4 */
+            background-color: #e8d8b0;
+            border: 2px solid #c0a080;
+            text-decoration: none;
+            color: #2b2b2b;
+            overflow: hidden;
+            box-shadow: 3px 3px 8px rgba(0,0,0,0.15);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: block;
+        }
+
+        .race-btn:hover {
+            box-shadow: 4px 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .race-btn:active {
+            transform: scale(0.98);
+        }
+
+        .race-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.4s ease;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .race-layer.layer-default {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .race-layer.layer-default img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            object-fit: cover;
+            opacity: 0.75;
+            z-index: -1;
+            filter: sepia(0.2);
+        }
+
+        .race-layer.layer-default span {
+            font-size: 1.2em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            background: rgba(255,255,255,0.85);
+            padding: 5px 12px;
+            border-bottom: 3px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .race-layer.layer-hover {
+            opacity: 0;
+            z-index: 1;
+            background-color: #f4e4bc;
+            text-align: center;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #555;
+            padding: 25px;
+        }
+
+        .race-btn:hover .race-layer.layer-default {
+            opacity: 0;
+        }
+
+        .race-btn:hover .race-layer.layer-hover {
+            opacity: 1;
+            z-index: 3;
+        }
+
+        /* 魔法板块样式 */
+        .magic-intro {
+            margin: 25px 0;
+        }
+
+        .magic-item {
+            margin-bottom: 20px;
+            padding-left: 20px;
+            border-left: 3px solid #c0a080;
+        }
+
+        .magic-item h4 {
+            color: #5c4033; /* 深棕色，非纯黑 */
+            font-size: 1.1em;
+            margin: 0 0 8px 0;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .magic-item p {
+            margin: 0;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #444;
         }
         /* --------------------------- */
 
@@ -352,7 +550,7 @@
             <a href="#geography">世界大观</a>
             <a href="#factions">主要势力</a>
             <a href="#races">种族格差</a>
-            <a href="#magic">魔法概论</a>
+            <a href="#magic">超凡能力</a>
         </nav>
     </header>
 
@@ -376,10 +574,7 @@
                     </p>
                 </div>
                 <div class="img-col">
-                    <div class="placeholder-img">
-                        [世界概念图]
-                    </div>
-                    <small>图名</small>
+                    <img src="image/main/world_concept.jpg" alt="世界概念图" style="width: 100%; border: 1px solid #555;">
                 </div>
             </div>
         </section>
@@ -388,7 +583,7 @@
             <h2>历史概览</h2>
             
             <blockquote>
-                人们自己创造自己的历史，但是他们并不是随心所欲地创造，并不是在他们自己选定的条件下创造，而是在直接碰到的、既定的、从过去承继下来的条件下创造。一切已死的先辈们的传统，像梦魇一样纠缠着活人的头脑。
+                「人们自己创造自己的历史，但是他们并不是随心所欲地创造，并不是在他们自己选定的条件下创造，而是在直接碰到的、既定的、从过去承继下来的条件下创造。一切已死的先辈们的传统，像梦魇一样纠缠着活人的头脑。」
             </blockquote>
 
             <!-- 时间线 -->
@@ -431,7 +626,7 @@
             <h2>世界大观</h2>
             
             <blockquote>
-                同样，大地的一切出产也都受人类支配。我们利用平原，我们利用山区，河流是我们的，湖泊是我们的，我们播种五谷，我们栽植树木，我们通过引水灌溉让土地肥沃，我们拦截、疏导、改变河流。简言之，凭借我们的双手，我们试图在自然之中创造出另一个自然。
+                「同样，大地的一切出产也都受人类支配。我们利用平原，我们利用山区，河流是我们的，湖泊是我们的，我们播种五谷，我们栽植树木，我们通过引水灌溉让土地肥沃，我们拦截、疏导、改变河流。简言之，凭借我们的双手，我们试图在自然之中创造出另一个自然。」
             </blockquote>
 
             <!-- 6个功能按钮 -->
@@ -501,55 +696,127 @@
 
         <section id="factions">
             <h2>主要势力</h2>
-            <div class="content-wrapper">
-                <div class="text-col">
-                    <h3>里穆宁特帝国</h3>
-                    <p>[介绍：aaa]</p>
-                    
-                    <h3>马尔纳帝国</h3>
-                    <p>[介绍：bbb]</p>
+            
+            <blockquote>
+                「政治的具体划分，即政治行动和动机所能归结为的独特划分，是朋友与敌人的划分。」
+            </blockquote>
 
-                    <h3>芬里西亚自由卫彻共和国</h3>
-                    <p>[介绍：ccc]</p>
-                    
-                    <a href="factions.html" class="read-more">查阅列国情况 &raquo;</a>
-                </div>
-                <div class="img-col">
-                    <div class="placeholder-img">
-                        [图片地址：各势力的旗帜集合]
+            <!-- 3个势力分类按钮 -->
+            <div class="faction-grid">
+                <a href="factions.html#powers" class="faction-btn">
+                    <div class="faction-layer layer-default">
+                        <span>世界列强</span>
                     </div>
-                </div>
+                    <div class="faction-layer layer-hover">
+                        在当今世界占据主导地位的强大国家——以统治海洋与大地的里穆宁特塞卡提亚帝国、以及依靠军事和工业迅速崛起的马尔纳帝国为首，弗里蒂亚国、康斯坦丁里尔至高国、朗格尼埃王国、最尊贵的莱加涅什共和国、芬里西亚自由卫彻联邦、塔拉迦斯坦帝国紧随其后。
+
+                    </div>
+                </a>
+                <a href="factions.html#nations" class="faction-btn">
+                    <div class="faction-layer layer-default">
+                        <span>其他国家</span>
+                    </div>
+                    <div class="faction-layer layer-hover">
+                        较小的独立国家、区域强国、殖民地与附属国，以及地图上那些往往被忽略的名字。尽管不如各大列强那样声名显赫，但仍对本地区及其人民影响巨大；常常也是各大帝国体系中不可忽略的组分，或许会在某时掀起一阵搅动世界的风暴。
+                    </div>
+                </a>
+                <a href="factions.html#organizations" class="faction-btn">
+                    <div class="faction-layer layer-default">
+                        <span>重要组织</span>
+                    </div>
+                    <div class="faction-layer layer-hover">
+                        跨越国界或在重要国家之内举足轻重的宗教团体、魔法行会、商业联盟、秘密结社与各类国际性组织，它们的影响常常超出世人想象。
+                    </div>
+                </a>
             </div>
+
+            <p style="text-align: center;">
+                <a href="factions.html" class="read-more">查阅列国情况 &raquo;</a>
+            </p>
         </section>
 
         <section id="races">
             <h2>种族格差</h2>
-            <ul>
-                <li><strong>人类（Terran）：</strong> [介绍：aaa]</li>
-                <li><strong>精灵（Chlymphas）：</strong> [介绍：bbb]</li>
-                <li><strong>狼人（Venris）：</strong> [介绍：ccc]</li>
-            </ul>
-            <a href="races.html" class="read-more">深入了解各族信息 &raquo;</a>
+            
+            <blockquote>
+                「野蛮人并非特定种族的人，而是那些坚信“野蛮”这一概念的人。通过排斥他者，我们才确立了自己所谓的文明。」
+            </blockquote>
+
+            <!-- 2x2种族按钮 -->
+            <div class="race-grid">
+                <a href="races.html#terran" class="race-btn">
+                    <div class="race-layer layer-default">
+                        <img src="image/main/race_terran.jpg" alt="人类">
+                        <span>人类（Terran）</span>
+                    </div>
+                    <div class="race-layer layer-hover">
+                        作为来自冰冷星河之外的移民，人类保留了智人祖先的基因蓝图，虽经由原始魔法与环境演化增强了体魄，但仍以智力与意志的优势著称。这是一个极具异质性的核心种族，文化从原始部落跨越至现代国家，内部差异巨大。尽管亚种在外观和文化上各异，但对于大多数物种来说，人类社会普遍推崇优绩竞争、精英政治与扩张进取。他们既是文明的建设者，也是野心的化身，对他者的态度在包容与仇视间摇摆，仿佛永远不知疲倦地追求着发展与支配。
+                    </div>
+                </a>
+                <a href="races.html#venris" class="race-btn">
+                    <div class="race-layer layer-default">
+                        <img src="image/main/race_venris.jpg" alt="狼人">
+                        <span>狼人（Venris）</span>
+                    </div>
+                    <div class="race-layer layer-hover">
+                        芬里斯拥有半狼半人的矫健体魄与俊美面容，是兼具战斗素质与思辨习惯的种族。严酷环境与敏锐感知培育了他们英勇无畏的信条，漫长的过冬经历则催生了其独特的诗人传统与哲学思考。狼人厌恶不义与权威压迫，社会结构呈现鲜明的“武装协商”色彩：实行财产公有与民兵制度，通过名为“卫彻”的直接民主大会维持秩序。他们既是狂怒的狂战士，也是温和的互助者，在自由、荣誉与集体协商中维持着一种高傲而真诚的平衡。
+                    </div>
+                </a>
+                <a href="races.html#hellarian" class="race-btn">
+                    <div class="race-layer layer-default">
+                        <img src="image/main/race_hellarian.jpg" alt="日精灵">
+                        <span>日精灵（Hellarian）</span>
+                    </div>
+                    <div class="race-layer layer-hover">
+                        日精灵拥有修长的身形与出众的魔法亲和力，长达三百年的寿命和魔法天赋仿佛上天的馈赠，却也带来了情感上的麻木与保守。这个曾经追求自由的种族如今已堕入精致的享乐主义，为了避免直视苦难而构建起等级森严的威权社会。统治阶层以“温情脉脉”的严父形象自居，通过繁文缛节与种族隔离，心安理得地奴役底层种族。他们鄙视短寿者的平庸，在奢华的礼仪与封闭的优越感中，维持着外表光鲜的幻象。
+                    </div>
+                </a>
+                <a href="races.html#sangdromn" class="race-btn">
+                    <div class="race-layer layer-default">
+                        <img src="image/main/race_sangdromn.jpg" alt="血族">
+                        <span>血族（Sângdromn）</span>
+                    </div>
+                    <div class="race-layer layer-hover">
+                        血族并非神话中的不死生物，而是历史遗留的、由湿件计算机与机械构成的“生体机械”。他们拥有超凡的运算记忆与身体机能，却因古老程序的漏洞与维护能力的劣化，沦为必须嗜血以维持运转的故障存在。其思维受制于内置审查，缺乏创造力，只能通过收集凡人大脑在“培育囊”中通过覆写来繁殖。为了掩盖其机械本质与系统错误，血族通过极度繁琐的礼仪与狂热的天启教信仰自我包装，在阴影中如精密的仪器般僵硬地统治着凡人世界。
+                    </div>
+                </a>
+            </div>
+
+            <p style="text-align: center;">
+                <a href="races.html" class="read-more">深入了解各族信息 &raquo;</a>
+            </p>
         </section>
 
         <section id="magic">
-            <h2>魔法概论</h2>
-            <div class="content-wrapper">
-                <div class="text-col">
-                    <p>
-                        一句话说明
-                    </p>
-                    <p>
-                        <strong>核心体系：</strong> 想想怎么编
-                    </p>
-                    <a href="magic_culture.html" class="read-more">阅读《秘法绪论》 &raquo;</a>
+            <h2>超凡能力</h2>
+            
+            <blockquote>
+                「我们用概念、数字和逻辑之网覆盖了世界，便以为认识了真理；其实我们只是把这变动不居的混沌，强行塞进了人类的模具里。」
+            </blockquote>
+
+            <!-- 四点介绍 -->
+            <div class="magic-intro">
+                <div class="magic-item">
+                    <h4>一、「三界域」</h4>
+                    <p>宇宙可以简化地视作由三个相互嵌入界域构成的动态统一体，这三个界域被比附地命名为物质、元素、灵魂。物质界由实物与能量构成，是感知与改造的实体基础；元素界充斥着在不同尺度上迅速重组的微观粒子结构；灵魂界则是无法化约的“剩余之物”，划定了观念的可能性与认知的边界。三者实为同一世界的不同面向，任意界域的波动皆会通过极端复杂的传导规律，导致其他界域的连锁变化。因此，世界本质上是变动不居的。</p>
                 </div>
-                <div class="img-col">
-                    <div class="placeholder-img">
-                        [图片地址]
-                    </div>
+                <div class="magic-item">
+                    <h4>二、能力原理</h4>
+                    <p>“超自然力量”实则是三界相互映射与共同变化的特定表现。施法者通过咒语、仪式或思维专注，形成特定的物质界变化，进而同频共振，引发元素界与灵魂界的连带效应。由于施法者本身无法超脱于这一统一体，且受限于主体特征与环境状况，这种干涉注定伴随着内在的不确定性与自反性——既是对规律的挪用，也是对未知的博弈。仅有极少数特殊存在能跳过物质媒介，直接感知并拨动元素或灵魂之弦，从根本层面上重塑现实状态，引发统一体的改变。</p>
+                </div>
+                <div class="magic-item">
+                    <h4>三、类别划分</h4>
+                    <p>操纵力量的范式主要分为六类：巫术依靠思辨与即兴，如艺术般拨动世界之弦；奥术是科学化的巫术，追求理论通约与稳定复现；神术依托教会信念网络，直接冲击元素界灵魂界；灵能源于对灵魂界的觉知与扰动；类法术涵盖各类可控的异能路径；精魂则是贯穿三界的连续性存在与集体影响。值得注意的是，凡所有相皆在三界，故不存在绝对的“非超自然”。任何力量的运用都是对三界平衡的扰动，既可能诱发蝴蝶效应，也可能反噬施法者自身的心智与性情。</p>
+                </div>
+                <div class="magic-item">
+                    <h4>四、普及程度</h4>
+                    <p>当代元素界和灵魂界趋于沉寂，施法者如凤毛麟角，仅万分之一的人类掌握真正法术，即便是天赋种族或法师后裔，成材率亦极低。法术不再是战场主宰，多用于侦查、制造等辅助领域，且施法者个人难以对抗庞大组织。高昂的成本与风险迫使精英阶层建立依附于凡俗经济的体制，虽掌握特权却无法实现全能统治或稳定世袭。最终，施法者在社会分工与权力博弈中，与世俗王权、教权及资本深度融合，成为社会精英结构的一部分。</p>
                 </div>
             </div>
+
+            <p style="text-align: center;">
+                <a href="magic_culture.html" class="read-more">阅读《秘法绪论》 &raquo;</a>
+            </p>
         </section>
 
     </div>
@@ -606,4 +873,3 @@
 
 </body>
 </html>
-
