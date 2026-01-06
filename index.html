@@ -248,7 +248,7 @@
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 300px;
+            height: 400px;
             background-color: #dcdcdc;
             overflow: hidden;
             border: 1px solid #555;
@@ -268,6 +268,73 @@
 
         .carousel-img.active {
             opacity: 1;
+        }
+
+        /* 时间线样式 */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 120px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-color), #daa520);
+        }
+
+        .timeline-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 112px;
+            top: 12px;
+            width: 12px;
+            height: 12px;
+            background-color: var(--accent-color);
+            border: 2px solid #daa520;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-label {
+            width: 100px;
+            flex-shrink: 0;
+            padding: 8px 12px;
+            background-color: #e8d8b0;
+            border: 1px solid #c0a080;
+            text-align: center;
+            font-weight: bold;
+            font-size: 0.9em;
+            color: var(--accent-color);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content {
+            flex: 1;
+            margin-left: 40px;
+            padding: 8px 15px;
+            background: rgba(255,255,255,0.4);
+            border-left: 2px solid #daa520;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        .timeline-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px dashed #aaa;
         }
         /* --------------------------- */
 
@@ -301,6 +368,12 @@
                     <p>
                         Quæ medicamenta non sanant, ferrum sanat, quæ ferrum non sanat, ignis sanat.
                     </p>
+                    <p>
+                        「旧世界正在死去，新世界尚未诞生：就在这明暗交错的时刻，各种各样的怪物出现了。」——葛兰西
+                    </p>
+                    <p>
+                        La crisi, come osservava Antonio Gramsci, è caratterizzata dalla morte del vecchio e dalla difficoltà di nascita del nuovo, portando a fenomeni morbosi in un periodo di transizione.
+                    </p>
                 </div>
                 <div class="img-col">
                     <div class="placeholder-img">
@@ -313,23 +386,49 @@
 
         <section id="history">
             <h2>历史概览</h2>
-            <div class="content-wrapper">
-                <div class="img-col">
-                    <div class="placeholder-img">
-                        [图片地址]
-                    </div>
+            
+            <blockquote>
+                人们自己创造自己的历史，但是他们并不是随心所欲地创造，并不是在他们自己选定的条件下创造，而是在直接碰到的、既定的、从过去承继下来的条件下创造。一切已死的先辈们的传统，像梦魇一样纠缠着活人的头脑。
+            </blockquote>
+
+            <!-- 时间线 -->
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-label">星海孑遗</div>
+                    <div class="timeline-content">科洛姆波原本孤寂地落于星海之中，原住民兽人尚处于踏入文明的前夕。跨越银河而来的人类殖民者永远地改变了这颗星球，但他们的文明随着禁忌实验、激烈内战而支离破碎。</div>
                 </div>
-                <div class="text-col">
-                    <p>
-                        说明文字
-                    </p>
-                    <ul>
-                        <li><strong>远古时代：</strong> [text]</li>
-                        <li><strong>魔法帝国：</strong> [text]</li>
-                        <li><strong>魔鬼入侵：</strong> [text]</li>
-                    </ul>
-                    <a href="history.html" class="read-more">查阅完整编年史 &raquo;</a>
+                <div class="timeline-item">
+                    <div class="timeline-label">审判之日</div>
+                    <div class="timeline-content">伴随着波及全球的烈焰风暴，苏醒的龙神们及其眷族判处了人类政权的死刑。各个智慧种族在龙神的刻意压制下变得蒙昧，此后逐渐平静的灵魂界和元素界却使得龙神越发虚弱，巨龙们则重蹈分裂覆辙。</div>
                 </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">英雄时代</div>
+                    <div class="timeline-content">越发难以干预世界的龙神及其从神通过残余龙族和精灵维持局面，狼人、鹰身人和血族则发起了无畏的挑战。当这场毁灭般的决战平息，英雄的时代也宣告结束，新的文明——以人类为先声——开始建立。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">魔法帝国</div>
+                    <div class="timeline-content">氏族组成部落，部落团结为酋邦，酋邦建成城市，最终出现了许多古典国家；旧的国家又让位于新的军事-魔法贵族集团，后者先后建立了数个强盛无匹的魔法帝国。魔法帝国间的攻伐使得传统的精英集团被迫吸纳新的盟友、因而不再能够垄断武力，最终在腐败、分化所致内忧和战争、入侵造成外患下风雨飘摇。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">魔鬼入侵</div>
+                    <div class="timeline-content">善用灵能、军容整肃的魔鬼从星空中而来，被迫联合的科洛姆波各族奋战一百余年终于驱逐敌寇，然而贫困和混乱重新占领了这片大陆，灵魂界和元素界也在短暂的激荡后迅速变得迟钝。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">复兴纪元</div>
+                    <div class="timeline-content">以天启教为首的新宗教显著扩张了影响，旧的强权连同能力大为衰弱的施法者在注定失败的挣扎后选择收缩势力。然而过去的知识和信念尚未完全毁灭，重新空旷的世界有待新的世代前去开垦，几轮大规模的迁徙殖民重塑了发展和征服的动力。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">征服时代</div>
+                    <div class="timeline-content">新的政权组织形式先后出现，科学与技术的进步、旧知识的复兴和新知识的开拓、重新开始而规模更甚的航海和征服，创造了新文明和新野蛮的沃土。科洛姆波又一次进入了全球性的时代，一个工业化和现代化的时代，一个以前人难以想象的速度创造财富和罪孽的时代，一个凡人的时代。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-label">凡人时代</div>
+                    <div class="timeline-content">[约50字说明文字：魔法式微、凡人主导、科技与蒸汽兴起的当今纪元]</div>
+                </div>
+            </div>
+
+            <div class="timeline-footer">
+                <a href="history.html" class="read-more">查阅完整编年史 &raquo;</a>
             </div>
         </section>
 
@@ -357,7 +456,7 @@
                         <span>星系天文</span>
                     </div>
                     <div class="geo-layer layer-hover">
-                        科洛姆波是苍茫银河中阿塔玛纳星系的第四颗行星。
+                        科洛姆波是苍茫银河中阿塔玛纳星系的第四颗行星，被两颗卫星环绕。
                     </div>
                 </a>
                 <a href="geography.html#history" class="geo-btn">
@@ -399,7 +498,6 @@
             </div>
 
             <!-- 图片轮播 -->
-            <!-- 建议图片尺寸：宽800px以上，高300px，保持统一比例 -->
             <div class="carousel-container" id="geo-carousel">
                 <img src="image/main/geo_slide_1.jpg" class="carousel-img active" alt="芬里西亚全图">
                 <img src="image/main/geo_slide_2.jpg" class="carousel-img" alt="马尔纳全图">
@@ -497,7 +595,7 @@
             window.addEventListener('scroll', tryPlayMusic);      
             window.addEventListener('touchstart', tryPlayMusic);   
 
-            // --- 新增：轮播图逻辑 ---
+            // 轮播图逻辑 
             const slides = document.querySelectorAll('#geo-carousel .carousel-img');
             let currentSlide = 0;
             
